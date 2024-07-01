@@ -254,12 +254,13 @@ public class QNum1 extends JFrame {
 		
 		
 		//5ht question starts from here....
-		JLabel lblNewLabe5 = new JLabel("Enter the limit for get digits which are equals to the sum of their factorial : ");
+		JLabel lblNewLabe5 = new JLabel("Enter the limit for digits which are equal to the sum of their factorial: ");
 		lblNewLabe5.setHorizontalAlignment(SwingConstants.LEFT);
 		lblNewLabe5.setFont(labelFont2);
 		contentPane.add(lblNewLabe5);
 		
 		textField5 = new JTextField();
+		textField5.setFont(labelFont);
 		contentPane.add(textField5);
 		textField5.setColumns(10);
 		
@@ -268,32 +269,24 @@ public class QNum1 extends JFrame {
 		contentPane.add(answerQ5);
 		
 		button5 = new JButton("Click");
-		textField5.setFont(labelFont);
 		button5.setFont(labelFont);
 		button5.setBackground(Color.GREEN);
-		
 		button5.addActionListener(new ActionListener() {
-			
 			public void actionPerformed(ActionEvent e) {
-			String inputText = textField5.getText();
-			
-			try {
-				long lmt5 = Long.parseLong(inputText);
-				int sum = 0;
-				
-				for(long i = 10; i < lmt5; i++) {
-					if(isCuriousNumber(i)) {
-						sum += i;
+				String inputText = textField5.getText();
+				try {
+					long lmt5 = Long.parseLong(inputText);
+					int sum = 0;
+					for (long i = 10; i < lmt5; i++) {
+						if (isCuriousNumber(i)) {
+							sum += i;
+						}
 					}
+					answerQ5.setText("<html><font color='blue'>Sum of curious numbers below " + lmt5 + ": " + sum + "</font></html>");
+				} catch (NumberFormatException ex) {
+					answerQ5.setText("<html><font color='red'>Invalid input. Please enter a valid number.</font></html>");
 				}
-				
-				answerQ5.setText("<html><font color = 'blue'>Sum of curios numbers "+ sum + "</font></html>");
-			}catch(NumberFormatException ex) {
-				answerQ5.setText("<html><font color='red'>Invalid input.Please enter a vaild number.</font></html>");
 			}
-		}
-
-		
 		});
 		contentPane.add(button5);
 		
